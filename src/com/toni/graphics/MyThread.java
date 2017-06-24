@@ -1,7 +1,11 @@
 package com.toni.graphics;
 
 import java.awt.image.BufferedImage;
-
+/*
+ * Представя задача за обработката на графично изображение
+ * като в зависимост от избрания тип обработка от потребителя
+ * пуска различен филтър над изображението.
+ */
 public class MyThread extends Thread {
 	private BufferedImage[] images = null;
 	private int index;

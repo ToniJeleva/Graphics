@@ -1,7 +1,9 @@
 package com.toni.graphics;
 
 import java.awt.image.BufferedImage;
-
+/*
+ * Представя филтър за замазване (blur) на изображение 
+ */
 public class Blur {
 	private BufferedImage[] images;
 	private int index;

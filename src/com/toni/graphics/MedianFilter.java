@@ -3,7 +3,10 @@ package com.toni.graphics;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
-
+/*
+ * Представлява филтър, който преобразува изображението 
+ * посредством медианата на пикселите. 
+ */
 public class MedianFilter {
 	
 	private BufferedImage image;

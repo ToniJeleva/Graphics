@@ -26,12 +26,17 @@ public class Chunks {
 
 
         int chunks = rows * cols;
-        int chunkWidth = image.getWidth() / cols; // determines the chunk width and height
+        // determines the chunk width and height
+        int chunkWidth = image.getWidth() / cols; 
         int chunkHeight = image.getHeight() / rows;
         int count = 0;
         BufferedImage imgs[] = new BufferedImage[chunks]; //Image array to hold image chunks
         
-        Thread [] threads1 = new Thread[numThreads];
+        /*
+         * Рразделя изображението на равни части и създава подизображения,
+         * които да бъдат подадени в последствие на отделните нишки
+         * за паралелна обработка
+         */
         for (int x = 0; x < rows; x++) {
             for (int y = 0; y < cols; y++) {
                 //Initialize the image array with image chunks
@@ -52,7 +57,11 @@ public class Chunks {
         MyThread [] threads = new MyThread[numThreads];
 
         long startTime = System.nanoTime();
-        //writing mini images into image files
+        
+        /*
+         * Подава всяко изображение на отделна нишка
+         * и я стартира 
+         */
         for (int i = 0; i < imgs.length; i++) {
         	threads[i] = new MyThread(imgs,i,type);
         	threads[i].start();
@@ -70,7 +79,10 @@ public class Chunks {
         int type = imgs[0].getType();
         
         BufferedImage finalImg = new BufferedImage(chunkWidth*cols, chunkHeight*rows,type);
-
+        
+        /*
+         * Конкатенира финалното изображение от подизображенията, които вече са обработени 
+         */
         int num = 0;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
